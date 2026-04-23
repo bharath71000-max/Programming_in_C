@@ -1,43 +1,59 @@
 #include <stdio.h>
 
-int main() {
-    char operator;
-    float num1, num2, result;
+// Function declarations
+float add(float a, float b);
+float subtract(float a, float b);
+float multiply(float a, float b);
+float divide(float a, float b);
 
-    printf("Enter an operator (+, -, *, /): ");
-    scanf("%c", &operator);
+int main() {
+    int choice;
+    float num1, num2;
+
+    printf("=== Simple Calculator ===\n");
+    printf("1. Add\n2. Subtract\n3. Multiply\n4. Divide\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
 
     printf("Enter two numbers: ");
     scanf("%f %f", &num1, &num2);
 
-    switch(operator) {
-        case '+':
-            result = num1 + num2;
-            printf("Result = %.2f\n", result);
+    switch(choice) {
+        case 1:
+            printf("Result = %.2f\n", add(num1, num2));
             break;
-
-        case '-':
-            result = num1 - num2;
-            printf("Result = %.2f\n", result);
+        case 2:
+            printf("Result = %.2f\n", subtract(num1, num2));
             break;
-
-        case '*':
-            result = num1 * num2;
-            printf("Result = %.2f\n", result);
+        case 3:
+            printf("Result = %.2f\n", multiply(num1, num2));
             break;
-
-        case '/':
-            if (num2 != 0) {
-                result = num1 / num2;
-                printf("Result = %.2f\n", result);
-            } else {
+        case 4:
+            if (num2 != 0)
+                printf("Result = %.2f\n", divide(num1, num2));
+            else
                 printf("Error! Division by zero.\n");
-            }
             break;
-
         default:
-            printf("Invalid operator!\n");
+            printf("Invalid choice.\n");
     }
 
     return 0;
+}
+
+// Function definitions
+float add(float a, float b) {
+    return a + b;
+}
+
+float subtract(float a, float b) {
+    return a - b;
+}
+
+float multiply(float a, float b) {
+    return a * b;
+}
+
+float divide(float a, float b) {
+    return a / b;
 }
